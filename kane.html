@@ -6,26 +6,7 @@
     <title>お小遣い帳</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <div class="container">
-        <h1>お小遣い帳</h1>
-
-        <!-- サマリー（合計表示） -->
-        <div class="summary">
-            <div class="summary-box income">
-                <h2>総収入</h2>
-                <p id="total-income">¥0</p>
-            </div>
-            <div class="summary-box expense">
-                <h2>総支出</h2>
-                <p id="total-expense">¥0</p>
-            </div>
-            <div class="summary-box balance">
-                <h2>残高</h2>
-                <p id="total-balance">¥0</p>
-            </div>
-        </div>
 
         <!-- 入力フォーム -->
         <form id="transaction-form">
@@ -64,15 +45,5 @@
             <button type="submit" id="submit-btn">決定</button>
         </form>
 
-        <!-- 履歴一覧 -->
-        <div class="history-section">
-            <h2>収支履歴</h2>
-            <ul id="transaction-list">
-                <!-- JavaScriptでここにリストが追加されます -->
-            </ul>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
