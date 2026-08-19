@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3han Project</title>
     <link rel="stylesheet" href="top_style.css">
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script src="top_script.js"></script>
 </head>
 <body>
     <header>お小遣い帳</header>
     <section>
-        <button>レシートを読み込む</button>
+        <button type="button">レシートを読み込む</button>
     </section>
     <section>
-        <button>収支を入力する</button>
+        <button type="button">収支を入力する</button>
     </section>
+    <p id="chart"></p>
 </body>
 </html>
