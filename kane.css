@@ -1,0 +1,210 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* サマリー（集計）デザイン */
+.summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.summary-box {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+}
+
+.summary-box.income { background-color: #2ecc71; }
+.summary-box.expense { background-color: #e74c3c; }
+.summary-box.balance { background-color: #3498db; }
+
+.summary-box h2 {
+    font-size: 13px;
+    margin: 0 0 5px 0;
+    color: white;
+}
+
+.summary-box p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* フォーム全体 */
+#transaction-form {
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* 1. 支出・収入の選択ボタンスタイル */
+.type-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.type-selector input[type="radio"] {
+    display: none;
+}
+
+.type-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+    color: #888;
+    transition: all 0.2s;
+}
+
+#type-expense:checked + .expense-label {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+#type-income:checked + .income-label {
+    background-color: #2ecc71;
+    color: white;
+    border-color: #2ecc71;
+}
+
+/* 各入力グループ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* 一番下の決定ボタン */
+#submit-btn {
+    width: 100%;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 5px;
+}
+
+#submit-btn:hover {
+    background-color: #34495e;
+}
+
+/* 履歴リストデザイン */
+.history-section h2 {
+    font-size: 18px;
+    text-align: left;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+#transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#transaction-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: #fafafa;
+    border-radius: 6px;
+    border-left: 5px solid #ccc;
+}
+
+#transaction-list li.income { border-left-color: #2ecc71; }
+#transaction-list li.expense { border-left-color: #e74c3c; }
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-date {
+    font-size: 11px;
+    color: #888;
+}
+
+.item-title {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.item-location {
+    font-size: 12px;
+    color: #666;
+}
+
+.item-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-amount {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+.delete-btn:hover {
+    color: #e74c3c;
+}
