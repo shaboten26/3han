@@ -36,3 +36,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 		},
 	});
 });
+
+//直近の履歴表示
+document.getElementById("recent").addEventListener("click", async () => {updateRecentHistory()});
+
+function updateRecentHistory() {
+	const recentHistory = document.getElementById("recent-history");
+	const transactions = JSON.parse(localStorage.getItem('transactions')) || [];//jsonがうまく読み取れない?
+	const recentLength = recentHistory.childElementCount;
+	for (let i = 0; i < 2; i++) {
+		if (recentLength + i < transactions.length) {
+			const transaction = transactions[transactions.length - 1 - i - recentLength];
+			const card = document.createElement("div");
+			card.classList.add("card");
+			card.innerHTML = `
+				<p>${transaction.amount}円</p>
+			`;
+			recentHistory.appendChild(card);
+		    console.log(transaction.amount);
+		}
+	}
+};
+
+updateRecentHistory();
