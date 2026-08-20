@@ -37,7 +37,7 @@ const updateRecentHistory = async () => {
 		if (transaction.price > 0) {
 			card.innerHTML = `
 					<h1 class="income">+${transaction.price}円</h1>
-					<p>${date.toLocaleDateString()}</p>
+					<p>${date.toLocaleDateString().slice(5)}</p>
 				`;
 		} else {
 			card.innerHTML = `
