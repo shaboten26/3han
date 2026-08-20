@@ -155,13 +155,42 @@ body > a button:hover {
 
 .card {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* 情報を縦に並べる */
     justify-content: center;
+    gap: 8px; /* 要素同士に適度な隙間を空ける */
 
-    min-height: 120px;
+    min-height: 100px;
     padding: 20px;
+    margin-bottom: 16px; /* カード同士の間隔を空ける */
 
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+
+.card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666666;
+}
+/* ベースとなるh1の設定（先ほどと同じ） */
+.card h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* 収入（プラス）の色：少し落ち着いた緑色 */
+.card h1.income {
+    color: #2e7d32; 
+}
+
+/* 支出（マイナス）の色：少し落ち着いた赤色 */
+.card h1.expense {
+    color: #d32f2f; 
+}
+#recent {
+    display: block;
+    margin: 20px auto; /* 上下の余白を開けつつ、左右の自動調整で中央に寄せる */
 }
