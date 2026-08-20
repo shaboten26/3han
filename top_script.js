@@ -51,7 +51,7 @@ async function updateRecentHistory() {
 		    console.log(transaction);
 			const card = document.createElement("div");
 			card.classList.add("card");
-			let date = new Date(transaction.date * 1000);
+			let date = new Date(transaction.date);
 			if(transaction.price > 0){
 				card.innerHTML = `
 					<h1 class="income">+${transaction.price}円</h1>
