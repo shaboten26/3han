@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レシート＆プリント一覧</title>
+    <link rel="stylesheet" href="lists.css">
+</head>
+<body>
+    <div class="container">
+        <h1>管理一覧</h1>
+
+        <!-- ナビゲーションタブ -->
+        <div class="nav-tabs">
+            <button class="nav-btn active" data-target="tab-receipts">レシート一覧</button>
+            <button class="nav-btn" data-target="tab-prints">プリント一覧</button>
+        </div>
+
+        <!-- レシート一覧タブ -->
+        <div id="tab-receipts" class="tab-page active">
+            <div class="card">
+                <h2>レシート検索・一覧</h2>
+                <div class="filter-box">
+                    <input type="text" id="receipt-search" placeholder="場所、タグ、商品名で検索...">
+                </div>
+                <div id="receipt-list" class="item-grid"></div>
+            </div>
+        </div>
+
+        <!-- プリント一覧タブ -->
+        <div id="tab-prints" class="tab-page">
+            <div class="card">
+                <h2>プリント検索・一覧</h2>
+                <div class="filter-box">
+                    <input type="text" id="print-search" placeholder="教科、名前、区分で検索...">
+                </div>
+                <div id="print-list" class="item-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lists.js"></script>
+</body>
+</html>
