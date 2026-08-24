@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レシート＆プリント一覧</title>
+    <link rel="stylesheet" href="lists_style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="top.html" class="back-link">&larr; 戻る</a>
+
+        <h1>詳細</h1>
+
+        <!-- ナビゲーションタブ -->
+        <div class="nav-tabs">
+            <button type="button" class="nav-btn active" data-target="tab-receipts">レシート一覧</button>
+            <button type="button" class="nav-btn" data-target="tab-prints">プリント一覧</button>
+        </div>
+
+        <!-- レシート一覧タブ -->
+        <div id="tab-receipts" class="tab-page active">
+            <div class="card">
+                <h2>レシート一覧</h2>
+                <div class="filter-box">
+                    <input type="text" id="receipt-search" placeholder="場所、タグ、商品名で検索...">
+                </div>
+                <div id="receipt-list" class="item-grid"></div>
+            </div>
+        </div>
+
+        <!-- プリント一覧タブ -->
+        <div id="tab-prints" class="tab-page">
+            <div class="card">
+                <h2>プリント一覧</h2>
+                <div class="filter-box">
+                    <input type="text" id="print-search" placeholder="教科、名前、区分で検索...">
+                </div>
+                <div id="print-list" class="item-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- type="module" を指定 -->
+    <script type="module" src="lists_script.js"></script>
+</body>
+</html>

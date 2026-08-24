@@ -1,28 +1,196 @@
-header{
-    background-color: aqua;
-    text-align: center;
-    margin-bottom: 10px;
+/* 全体 */
+* {
+    box-sizing: border-box;
 }
-body{
-    margin: 0px auto;
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 0 20px 40px;
+
+    font-family:
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        Meiryo,
+        sans-serif;
+
+    color: #333;
+    background: #f7f9fc;
 }
-button{
-    background-color: cyan;
-    font-size: 35px;
-    border: black 50;
-    padding: 12px;
-    border-radius: 10px;
+
+/* ヘッダー */
+header {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    padding: 24px 20px;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, #5b8def, #7b61ff);
+
+    font-size: 28px;
+    font-weight: bold;
     text-align: center;
-    width: 500px;
-    margin: 10px auto;
+    letter-spacing: 0.08em;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* 入力ボタンのセクション */
+body > section {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin: 32px 0 20px;
 }
-canvas{
-    background-color: white;
+
+/* ボタン共通 */
+button {
+    min-width: 180px;
+    padding: 13px 28px;
+
+    border: none;
+    border-radius: 999px;
+
+    color: #ffffff;
+    background-color: #5b8def;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 4px 8px rgba(91, 141, 239, 0.3);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    background-color: #416fc9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(91, 141, 239, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(91, 141, 239, 0.3);
+}
+
+/* キーボード操作時 */
+button:focus-visible {
+    outline: 3px solid #ffc107;
+    outline-offset: 3px;
+}
+
+/* グラフ */
+#myBarChart {
+    display: block;
+    width: min(100%, 700px) !important;
+    height: 420px !important;
+    margin: 30px auto;
+
+    padding: 20px;
+    border-radius: 16px;
+    background-color: #ffffff;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* 詳細を見るリンク */
+body > a {
+    display: block;
+    width: fit-content;
+    margin: 28px auto 0;
+
+    text-decoration: none;
+}
+
+/* 詳細ボタンの色 */
+body > a button {
+    background-color: #34a853;
+    box-shadow: 0 4px 8px rgba(52, 168, 83, 0.3);
+}
+
+body > a button:hover {
+    background-color: #26843f;
+    box-shadow: 0 6px 12px rgba(52, 168, 83, 0.4);
+}
+
+/* スマートフォン対応 */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 0 14px 30px;
+    }
+
+    header {
+        width: calc(100% + 28px);
+        margin-left: -14px;
+        padding: 20px 14px;
+        font-size: 24px;
+    }
+
+    body > section {
+        margin-top: 25px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
+    }
+
+    #myBarChart {
+        height: 330px !important;
+        margin-top: 24px;
+        padding: 10px;
+    }
+}
+.recent-history {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2列 */
+    gap: 16px; /* カード同士の間隔 */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
     display: flex;
+    flex-direction: column; /* 情報を縦に並べる */
     justify-content: center;
-    align-items: center;
-    margin: 10px auto;
+    gap: 8px; /* 要素同士に適度な隙間を空ける */
+
+    min-height: 100px;
+    padding: 20px;
+    margin-bottom: 16px; /* カード同士の間隔を空ける */
+
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+
+.card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666666;
+}
+/* ベースとなるh1の設定（先ほどと同じ） */
+.card h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* 収入（プラス）の色：少し落ち着いた緑色 */
+.card h1.income {
+    color: #2e7d32; 
+}
+
+/* 支出（マイナス）の色：少し落ち着いた赤色 */
+.card h1.expense {
+    color: #d32f2f; 
+}
+#recent {
+    display: block;
+    margin: 20px auto; /* 上下の余白を開けつつ、左右の自動調整で中央に寄せる */
 }

@@ -28,14 +28,33 @@
     - タグ
     - 小計
     - 商品名
-    - 値段
 - プリント
     - 提出物
         - 教科
         - 名前
         - 日付
     - 配布物
-
-
-watasigakita
-maggyo
+### 技術
+- IndexedDB
+- OCR(Tesseract.js)
+- グラフ(chart.js)
+### db構造
+type print{
+    content: string;
+    note?: string;
+    submit?: {
+                subject: string;
+                name: string;
+                limit: Date;
+            }
+}
+type money{
+    purpose: PurposeType;
+    place: string;
+    date: number;
+    tag: string[];
+    <!-- goods: {
+        name: string;
+        price: number;
+    }[]; -->
+}
