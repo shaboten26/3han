@@ -93,8 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		await db.money.add(data);
+		const nowMoney = Number(localStorage.getItem("nowMoney"));
+		localStorage.setItem("nowMoney", nowMoney + data.price);
 		console.log("登録データ:", data);
-
 		alert("保存しました");
 		window.location.assign("top.html");
 	});

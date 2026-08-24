@@ -35,8 +35,6 @@ const updateRecentHistory = async () => {
 		.offset(recentLength)
 		.limit(2)
 		.toArray();
-	console.log("recentData");
-	console.log(recentData);
 	recentData.forEach((transaction) => {
 		console.log(transaction);
 		const card = document.createElement("div");
@@ -92,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			},
 		});
 		await updateRecentHistory();
+		const nowMoney = localStorage.getItem("nowMoney") || 0;
+		const nowMoneyElement = document.getElementById("nowMoney");
+		nowMoneyElement.textContent = nowMoney || 0;
 	};
 	init();
 });
