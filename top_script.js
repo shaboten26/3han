@@ -1,19 +1,27 @@
 import { db } from "./db.js";
 
 const getChartData = async () => {
+	const now = new Date();
+	const start = dateFns.startOfMonth(now).getTime();
+	const end = dateFns.endOfMonth(now).getTime();
+
+	// 今月1日〜今月末日の範囲内のみ取得（両端を含む true, true）
 	const result = await db.money
 		.where("date")
-		.above(dateFns.startOfMonth(new Date()).getTime())
+		.between(start, end, true, true)
 		.toArray();
-	const thisMonthDays = dateFns.getDaysInMonth(new Date());
+
+	const thisMonthDays = dateFns.getDaysInMonth(now);
 	const dailyTotals = new Array(thisMonthDays).fill(0);
+
 	result.forEach((item) => {
 		const day = dateFns.getDate(new Date(item.date));
 		if (day >= 1 && day <= thisMonthDays) {
-			const amount = item.price;
+			const amount = Number(item.price) || 0;
 			dailyTotals[day - 1] += amount;
 		}
 	});
+
 	return dailyTotals;
 };
 
@@ -47,6 +55,10 @@ const updateRecentHistory = async () => {
 					<p>${transaction.place}</p>
 				`;
 		}
+		card.addEventListener(
+			"click",
+			() => (window.location.href = `details.html?id=${transaction.id}`),
+		);
 		recentHistory.appendChild(card);
 	});
 	if (recentData.length === 0) {
