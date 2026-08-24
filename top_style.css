@@ -194,3 +194,29 @@ body > a button:hover {
     display: block;
     margin: 20px auto; /* 上下の余白を開けつつ、左右の自動調整で中央に寄せる */
 }
+
+/* 所持金 */
+body > p {
+    width: fit-content;
+    margin: 28px auto 10px;
+    padding: 14px 28px;
+
+    color: #555;
+    background-color: #ffffff;
+
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#nowMoney {
+    margin-left: 8px;
+
+    color: #2e7d32;
+
+    font-size: 28px;
+    font-weight: bold;
+}
