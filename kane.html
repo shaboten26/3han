@@ -8,8 +8,8 @@
     <script type="module" src="kane_script.js" defer></script>
 </head>
     <body>
-                <a href="top.html" class="back-link">&larr; 戻る</a>
-               <!-- 入力フォーム -->
+        <a href="top.html" class="back-link">&larr; 戻る</a>
+        <!-- 入力フォーム -->
         <form id="transaction-form">
             <!-- 1. 上：支出と収入の選択ボタン -->
             <div class="type-selector">
@@ -19,27 +19,38 @@
                 <label for="type-income" class="type-btn income-label">収入</label>
             </div>
 
-            <!-- 2. 中：金額、用途、場所を入力する欄 -->
+            <!-- 2. 中：金額、用途、場所、タグを入力する欄 -->
             <div class="form-group">
-                <label for="amount">金額（円）</label>
+                <label for="amount">金額（円）<span class="required-badge">*必須</span></label>
                 <input type="number" id="amount" placeholder="例: 1000" min="0" required>
             </div>
 
             <div id="only-expense">
-            <div class="form-group">
-                <label for="title">用途</label>
-                <input type="text" id="purpose" placeholder="例: ランチ代、お小遣い" required>
-            </div>
+                <div class="form-group">
+                    <label for="purpose">用途（任意）</label>
+                    <input type="text" id="purpose" placeholder="例: ランチ代、お小遣い">
+                </div>
 
-            <div class="form-group">
-                <label for="location">場所</label>
-                <input type="text" id="location" placeholder="例: コンビニ、スーパー" required>
+                <div class="form-group">
+                    <label for="location">場所（任意）</label>
+                    <input type="text" id="location" placeholder="例: コンコンビニ、スーパー">
+                </div>
+
+                <!-- タグ入力欄 -->
+                <div class="form-group">
+                    <label for="tag-input">タグ（任意）</label>
+                    <div class="tag-input-container">
+                        <input type="text" id="tag-input" placeholder="例: 食費 (Enterで追加)">
+                        <button type="button" id="add-tag-btn">追加</button>
+                    </div>
+                    <!-- 追加されたタグの表示エリア -->
+                    <div id="tag-list" class="tag-list"></div>
+                </div>
             </div>
-        </div>
 
             <!-- 3. 下：日付を選べる欄 -->
             <div class="form-group">
-                <label for="date">日付</label>
+                <label for="date">日付<span class="required-badge">*必須</span></label>
                 <input type="date" id="date" required>
             </div>
 

@@ -220,3 +220,77 @@ input {
 .delete-btn:hover {
     color: #e74c3c;
 }
+
+/* === ここから追加したスタイル === */
+
+/* 必須マーク表示 */
+.required-badge {
+    color: #e74c3c;
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+/* タグ入力欄コンテナ */
+.tag-input-container {
+    display: flex;
+    gap: 8px;
+}
+
+.tag-input-container input {
+    flex: 1;
+}
+
+#add-tag-btn {
+    padding: 8px 14px;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+#add-tag-btn:hover {
+    background-color: #2b6cb0;
+}
+
+/* 追加済みタグ一覧 */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+/* タグバッジ */
+.tag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #edf2f7;
+    color: #2d3748;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #cbd5e0;
+}
+
+/* タグ削除ボタン */
+.tag-remove-btn {
+    background: none;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 0 2px;
+    line-height: 1;
+}
+
+.tag-remove-btn:hover {
+    color: #e53e3e;
+}
