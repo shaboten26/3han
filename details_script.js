@@ -68,7 +68,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 			if (isConfirmed) {
 				try {
 					// IndexedDB からデータを削除
+					const theData  = db.money.get(itemId);
 					await db.money.delete(itemId);
+					const nowMoney = localStorage.getItem("nowMoney");
+					localStorage.setItem("nowMoney", Number(nowMoney) + theData.price);
 					
 					// 削除完了のアラートを出し、一覧ページへ戻る
 					alert("データを削除しました。");
