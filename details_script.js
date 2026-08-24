@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const html = `
         <div class="detail-card">
             <img src="${item.image || dummyImage}" alt="詳細画像" class="detail-image">
+            <div class="detail-item"><strong>収支:</strong> ${item.price || "-"}</div>
             <div class="detail-item"><strong>場所 (店名):</strong> ${item.place || '-'}</div>
             <div class="detail-item"><strong>目的:</strong> ${item.purpose || '-'}</div>
             <div class="detail-item"><strong>日付:</strong> ${displayDate}</div>

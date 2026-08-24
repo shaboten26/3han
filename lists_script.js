@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 		try {
 			// IndexedDB (db.money) から全件取得
 			items = await db.money.toArray();
-			// 日付（date）で降順ソート（新しい順）
+			// 最初は日付（date）で降順ソート（新しい順）にしておく
 			items.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
 		} catch (error) {
 			console.error("データの取得に失敗しました:", error);
@@ -28,15 +28,52 @@ document.addEventListener("DOMContentLoaded", async () => {
 		if (receiptList) receiptList.innerHTML = "";
 
 		const keyword = receiptSearch ? receiptSearch.value.toLowerCase().trim() : "";
+		let filteredItems = items;
 
-		// 検索フィルター (place, purpose, tag から検索)
-		const filteredItems = items.filter((item) => {
-			if (!keyword) return true;
+		// 検索キーワードがある場合のみフィルタリングと並び替えを実行
+		if (keyword) {
+			filteredItems = items
+				.map((item) => {
+					let score = 0;
 
-			const tagsText = Array.isArray(item.tag) ? item.tag.join(" ") : (item.tag || "");
-			const matchText = `${item.place || ""} ${item.purpose || ""} ${tagsText} ${item.itemsName || ""}`.toLowerCase();
-			return matchText.includes(keyword);
-		});
+					// 各項目のテキストを取得（比較用に小文字化）
+					const tagsText = Array.isArray(item.tag) ? item.tag.join(" ") : (item.tag || "");
+					const tagsTextLower = tagsText.toLowerCase();
+					
+					const placeText = (item.place || "").toLowerCase();
+					const purposeText = (item.purpose || "").toLowerCase();
+					const itemsNameText = (item.itemsName || "").toLowerCase();
+
+					// ★タグにマッチした場合はスコアを高く設定（最優先）
+					if (tagsTextLower.includes(keyword)) {
+						score += 100; 
+					}
+					// 店名、場所（目的）、商品名にマッチした場合は通常のスコア
+					if (placeText.includes(keyword)) {
+						score += 10;
+					}
+					if (purposeText.includes(keyword)) {
+						score += 10;
+					}
+					if (itemsNameText.includes(keyword)) {
+						score += 10;
+					}
+
+					// itemとscoreのペアを返す
+					return { item, score };
+				})
+				// スコアが1以上（どこかの項目にマッチした）ものを残す
+				.filter((entry) => entry.score > 0)
+				// スコアの降順でソート。スコアが同じなら日付が新しい順を維持
+				.sort((a, b) => {
+					if (b.score !== a.score) {
+						return b.score - a.score; // スコアが高い方を上に
+					}
+					return new Date(b.item.date || 0) - new Date(a.item.date || 0);
+				})
+				// ソートが終わったら元の item データだけを取り出す
+				.map((entry) => entry.item);
+		}
 
 		// 一覧の描画
 		if (receiptList) {
