@@ -57,3 +57,19 @@ h1 {
     display: inline-block;
     width: 110px;
 }
+
+/* 削除ボタンのデザイン */
+.delete-btn {
+    background-color: #e53e3e; /* 赤系の色 */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c53030; /* ホバー時に少し暗くする */
+}
